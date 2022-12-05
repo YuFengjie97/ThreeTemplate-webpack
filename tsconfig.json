@@ -5,7 +5,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "outDir": "./dist/",
+    "outDir": "./docs/",
     "noImplicitAny": true,
     "sourceMap": true,
     "target": "es5",

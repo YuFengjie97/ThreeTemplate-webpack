@@ -1,31 +1,32 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const {resolve} = path
 
 module.exports = {
   mode: 'development',
   entry: './index.ts',
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': resolve(__dirname, 'src'),
     },
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: resolve(__dirname, 'docs'),
     clean: true,
     publicPath: '/',
   },
   devtool: 'inline-source-map',
   devServer: {
-    static: path.resolve(__dirname, 'dist'),
+    static: path.resolve(__dirname, 'docs'),
     hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'ThreeTemplate-webpack',
-      template: path.resolve(__dirname, 'index.html'),
-      favicon: path.resolve(__dirname, 'src/assets/icon.svg'),
+      template: resolve(__dirname, 'index.html'),
+      favicon: resolve(__dirname, 'src/assets/icon.svg'),
     }),
   ],
   module: {
