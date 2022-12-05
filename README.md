@@ -1,2 +1,2 @@
 # ThreeTemplate-webpack
-a demo use webpack build a template for threejs
+hi,this is a easy demo for three.js to use webpack build,just for learn and pratice

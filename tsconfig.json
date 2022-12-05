@@ -1,0 +1,24 @@
+{
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "node_modules/**/*.d.ts",
+  ],
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "target": "es5",
+    "module": "ES6",
+    "lib": ["DOM"],
+    "strict": true,
+    "esModuleInterop": true,
+    "allowJs": true, // js和ts互相引入
+  }
+}
