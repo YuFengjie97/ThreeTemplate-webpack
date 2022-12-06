@@ -3,13 +3,9 @@ const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 
 const app = express()
-const config = require('./webpack.config.js')({ production: true }) // 因为配置文件改为函数，在node层手动传入env对象
+const config = require('./webpack.config.js')() // 因为配置文件改为函数，在node层手动传入env对象
 const compiler = webpack(config)
 
-// 告知 express 使用 webpack-dev-middleware，
-// 以及将 webpack.config.js 配置文件作为基础配置。
-console.log('######publicPath######', config.output.publicPath)
-debugger
 app.use(
   webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath,
@@ -17,6 +13,6 @@ app.use(
 )
 
 // 将文件 serve 到 port 3000。
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!\n')
+app.listen(process.env.PORT, function () {
+  console.log(`Running http://localhost:${process.env.PORT}\n`)
 })

@@ -1,12 +1,14 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { resolve } = path
+const initEnv = require('./initEnv.js')
 
-module.exports = (env) => {
-  console.log('######is Production?########', env.production)
-  const production = env.production
+module.exports = () => {
+  initEnv()
+  console.log('####env',process.env.NODE_ENV);
+  console.log('####publicPath',process.env.PUBLIC_PATH);
   return {
-    mode: production ? 'production' : 'development',
+    mode: process.env.NODE_ENV,
     entry: './index.ts',
     resolve: {
       alias: {
@@ -18,12 +20,13 @@ module.exports = (env) => {
       filename: 'bundle.js',
       path: resolve(__dirname, 'docs'),
       clean: true,
-      publicPath: production ? '/ThreeTemplate-webpack/' : '/',
+      publicPath: process.env.PUBLIC_PATH,
     },
     devtool: 'inline-source-map',
     devServer: {
       static: path.resolve(__dirname, './docs'),
       hot: true,
+      port: process.env.PORT
     },
     plugins: [
       new HtmlWebpackPlugin({
