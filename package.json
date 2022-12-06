@@ -5,10 +5,10 @@
   "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env NODE_ENV=production webpack",
-    "watch": "cross-env NODE_ENV=development webpack --watch",
-    "dev": "cross-env NODE_ENV=development webpack serve --open",
-    "dev2": "cross-env NODE_ENV=development node server.js"
+    "build": "webpack --config webpack.prod.js",
+    "watch": "webpack --watch --config webpack.dev.js",
+    "dev": "webpack serve --open --config webpack.dev.js",
+    "dev2": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -38,7 +38,8 @@
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0",
     "webpack-dev-middleware": "^6.0.1",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0"
   },
   "dependencies": {
     "dat.gui": "^0.7.9",

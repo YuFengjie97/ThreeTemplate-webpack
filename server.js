@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 
 const app = express()
-const config = require('./webpack.config.js')() // 因为配置文件改为函数，在node层手动传入env对象
+const config = require('./webpack.dev.js')
 const compiler = webpack(config)
 
 app.use(
@@ -12,7 +12,6 @@ app.use(
   })
 )
 
-// 将文件 serve 到 port 3000。
-app.listen(process.env.PORT, function () {
-  console.log(`Running http://localhost:${process.env.PORT}\n`)
+app.listen(config.devServer.port, function () {
+  console.log(`Running http://localhost:${config.devServer.port}\n`)
 })
