@@ -2,7 +2,7 @@ const { resolve } = require('path')
 const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
 
-const PUBLIC_PATH = '/ThreeTemplate-webpack/'
+const PUBLIC_PATH = '/ThreeTemplate-webpack/'  // github仓库名字
 const outputDir = './docs'
 
 const config = merge(common, {
